@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora de Média</title>
+<style>
+    .azul {
+        color: blue;
+    }
+    .vermelho {
+        color: red;
+    }
+</style>
+</head>
+<body>
+    <h1>Calculadora de Média</h1>
+    <form id="form-notas">
+        <label for="nota1">Nota 1:</label>
+        <input type="number" id="nota1" name="nota1" step="0.01" required><br><br>
+
+        <label for="nota2">Nota 2:</label>
+        <input type="number" id="nota2" name="nota2" step="0.01" required><br><br>
+
+        <button type="submit">Calcular Média</button>
+    </form>
+
+    <p>Média: <span id="media"></span></p>
+    <p>Situação: <span id="situacao"></span></p>
+
+    <script>
+        document.getElementById("form-notas").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var nota1 = parseFloat(document.getElementById("nota1").value);
+            var nota2 = parseFloat(document.getElementById("nota2").value);
+
+            var media = (nota1 + nota2) / 2;
+
+            var situacao, cor;
+            if (media >= 6) {
+                situacao = "Aprovado";
+                cor = "azul";
+            } else {
+                situacao = "Reprovado";
+                cor = "vermelho";
+            }
+
+            document.getElementById("media").innerHTML = media.toFixed(1);
+            document.getElementById("situacao").innerHTML = situacao;
+            document.getElementById("situacao").className = cor;
+        });
+    </script>
+</body>
+</html>

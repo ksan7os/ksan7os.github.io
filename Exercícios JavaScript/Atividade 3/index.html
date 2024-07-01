@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>The Element Object</h1>
+<h2>The appendChild() Method</h2>
+
+<ul id="myList">
+  <li>Coffee</li>
+  <li>Tea</li>
+</ul>
+
+<p>
+  <label for="itemInput">Item Text:</label>
+  <input type="text" id="itemInput" value="Water">
+</p>
+
+<p>Choose item color:</p>
+<input type="radio" id="colorRed" name="colors" value="red">
+<label for="colorRed">Red</label><br>
+<input type="radio" id="colorGreen" name="colors" value="green">
+<label for="colorGreen">Green</label><br>
+<input type="radio" id="colorBlue" name="colors" value="blue">
+<label for="colorBlue">Blue</label><br><br>
+
+<button id="appendBtn">Append</button>
+
+<script>
+document.getElementById("appendBtn").addEventListener("click", function() {
+
+  const itemText = document.getElementById("itemInput").value;
+
+  const node = document.createElement("li");
+
+  const textnode = document.createTextNode(itemText);
+
+  node.appendChild(textnode);
+
+  let color;
+  if (document.getElementById("colorRed").checked) {
+    color = "red";
+  } else if (document.getElementById("colorGreen").checked) {
+    color = "green";
+  } else if (document.getElementById("colorBlue").checked) {
+    color = "blue";
+  } else {
+    color = "black";
+  }
+
+  node.style.color = color;
+
+  document.getElementById("myList").appendChild(node);
+});
+</script>
+
+</body>
+</html>
